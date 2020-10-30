@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import axios from "axios";
-
+const plantsEndpoint = 'plants'
 class PlantList extends React.Component {
   // add state with a property called "plants" - initialize as an empty array
   constructor(){
@@ -13,9 +13,16 @@ class PlantList extends React.Component {
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
   componentDidMount() {
-    axios.get("http://localhost:3333/plants").then(res => {
-      this.setState({plants: res.plantsData});
-    }).catch(error => console.log("couldn't get plant data"));
+    axios
+      .get(`http://localhost:3333/${plantsEndpoint}`)
+      .then((res) => {
+        this.setState({
+          plants: res.data.plantsData,
+        });
+      })
+      .catch((err) => {
+        console.log('Error, there are no plants!');
+      });
   }
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
