@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import axios from "axios";
 
-export default class PlantList extends React.Component {
+class PlantList extends React.Component {
   // add state with a property called "plants" - initialize as an empty array
   constructor(){
     super();
@@ -12,11 +12,10 @@ export default class PlantList extends React.Component {
   // when the component mounts:
   //   - fetch data from the server endpoint - http://localhost:3333/plants
   //   - set the returned plants array to this.state.plants
-  componentDidMount(){
-    axios.get('http://localhost:3333/plants')
-    .then(res =>{
-      this.setState({plants:res.plantsDaata});
-    }).catch(err =>console.log('Missing Plants data!'))
+  componentDidMount() {
+    axios.get("http://localhost:3333/plants").then(res => {
+      this.setState({plants: res.plantsData});
+    }).catch(error => console.log("couldn't get plant data"));
   }
   /*********  DON'T CHANGE ANYTHING IN THE RENDER FUNCTION *********/
   render() {
@@ -47,3 +46,5 @@ export default class PlantList extends React.Component {
     );
   }
 }
+
+export default PlantList

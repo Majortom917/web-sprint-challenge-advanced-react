@@ -1,5 +1,5 @@
 // write your custom hook here to control your checkout form
-import react, {useState} from 'react'
+import React, {useState} from 'react'
 
 const initialValue = {
     firstName: "",
@@ -15,7 +15,7 @@ const initialValue = {
     const [values, setValues] = useState(initialValue);
 
     const handleChanges = (e) =>{
-        setValues({...valaues, [e.target.name]: e.target.value})
+        setValues({...values, [e.target.name]: e.target.value})
     }
 
     const handleSubmit =(e) =>{
